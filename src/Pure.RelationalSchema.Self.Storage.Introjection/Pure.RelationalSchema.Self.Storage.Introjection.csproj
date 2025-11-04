@@ -14,13 +14,9 @@
     <PackageProjectUrl>https://github.com/kudima03/Pure.RelationalSchema.Self.Storage.Introjection</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Pure.Primitives.Materialized" Version="0.1.0" />
-    <PackageReference Include="Pure.Primitives.Switches" Version="0.1.0" />
-    <PackageReference Include="Pure.RelationalSchema.HashCodes" Version="2.0.0" />
-    <PackageReference Include="Pure.RelationalSchema.Self.Schema" Version="0.1.0-preview.3.3.0" />
-    <PackageReference
-      Include="Pure.RelationalSchema.Storage.HashCodes"
-      Version="0.1.0-preview.1.0.0"
-    />
+    <PackageReference Include="Pure.Primitives.Switches" Version="1.0.0" />
+    <PackageReference Include="Pure.RelationalSchema.HashCodes" Version="3.0.0" />
+    <PackageReference Include="Pure.RelationalSchema.Self.Schema" Version="0.1.0-preview.4.0.0" />
+    <PackageReference Include="Pure.RelationalSchema.Storage.HashCodes" Version="0.1.0-preview.2.0.0" />
   </ItemGroup>
 </Project>
