@@ -15,10 +15,7 @@ internal sealed record HashFromString : IDeterminedHash
 
     public IEnumerator<byte> GetEnumerator()
     {
-        return Convert
-            .FromHexString(_hash.TextValue)
-            .AsEnumerable()
-            .GetEnumerator();
+        return Convert.FromHexString(_hash.TextValue).AsEnumerable().GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
