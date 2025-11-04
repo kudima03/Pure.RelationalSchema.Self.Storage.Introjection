@@ -1,7 +1,6 @@
 using System.Collections;
-using Pure.HashCodes;
+using Pure.HashCodes.Abstractions;
 using Pure.Primitives.Abstractions.String;
-using Pure.Primitives.Materialized.String;
 
 namespace Pure.RelationalSchema.Self.Storage.Introjection.Internals;
 
@@ -17,7 +16,7 @@ internal sealed record HashFromString : IDeterminedHash
     public IEnumerator<byte> GetEnumerator()
     {
         return Convert
-            .FromHexString(new MaterializedString(_hash).Value)
+            .FromHexString(_hash.TextValue)
             .AsEnumerable()
             .GetEnumerator();
     }
