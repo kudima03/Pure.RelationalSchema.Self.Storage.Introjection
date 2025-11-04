@@ -25,6 +25,8 @@ public sealed record SchemasFromRowsTests : IAsyncLifetime, IDisposable
                 new SchemaProjection(new RelationalSchemaSchema())
             );
 
+        _ = schemaDataSet.Values.Sum(x => x.Count());
+
         Assert.True(
             new SchemaHash(new RelationalSchemaSchema()).SequenceEqual(
                 new SchemaHash(new SchemasIntrojection(schemaDataSet).Single())
