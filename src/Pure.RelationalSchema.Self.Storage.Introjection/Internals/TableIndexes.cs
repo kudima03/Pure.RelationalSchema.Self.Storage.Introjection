@@ -12,12 +12,12 @@ internal sealed record TableIndexes : IEnumerable<IDeterminedHash>
 
     public TableIndexes(IDeterminedHash tableHash, IStoredSchemaDataSet schemaDataset)
     {
-        _rows = schemaDataset[new TablesToIndexesTable()]
-            .Where(x =>
-                new HashFromString(
-                    x.Cells[new ReferenceToTableColumn()].Value
-                ).SequenceEqual(tableHash)
-            );
+        IQueryable<IRow> rows = schemaDataset[new TablesToIndexesTable()];
+        _rows = rows.Where(x =>
+            new HashFromString(x.Cells[new ReferenceToTableColumn()].Value).SequenceEqual(
+                tableHash
+            )
+        );
     }
 
     public IEnumerator<IDeterminedHash> GetEnumerator()

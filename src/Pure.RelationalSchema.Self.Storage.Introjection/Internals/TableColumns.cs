@@ -12,12 +12,12 @@ internal sealed record TableColumns : IEnumerable<IDeterminedHash>
 
     public TableColumns(IDeterminedHash tableHash, IStoredSchemaDataSet schemaDataset)
     {
-        _rows = schemaDataset[new TablesToColumnsTable()]
-            .Where(x =>
-                new HashFromString(
-                    x.Cells[new ReferenceToTableColumn()].Value
-                ).SequenceEqual(tableHash)
-            );
+        IQueryable<IRow> rows = schemaDataset[new TablesToColumnsTable()];
+        _rows = rows.Where(x =>
+            new HashFromString(x.Cells[new ReferenceToTableColumn()].Value).SequenceEqual(
+                tableHash
+            )
+        );
     }
 
     public IEnumerator<IDeterminedHash> GetEnumerator()
