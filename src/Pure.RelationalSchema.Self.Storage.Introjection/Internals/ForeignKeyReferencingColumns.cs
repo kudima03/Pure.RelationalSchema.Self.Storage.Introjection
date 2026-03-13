@@ -15,12 +15,12 @@ internal sealed record ForeignKeyReferencingColumns : IEnumerable<IDeterminedHas
         IStoredSchemaDataSet schemaDataset
     )
     {
-        _rows = schemaDataset[new ForeignKeysToReferencingColumnsTable()]
-            .Where(x =>
-                new HashFromString(
-                    x.Cells[new ReferenceToForeignKeyColumn()].Value
-                ).SequenceEqual(foreignKeyHash)
-            );
+        IQueryable<IRow> rows = schemaDataset[new ForeignKeysToReferencingColumnsTable()];
+        _rows = rows.Where(x =>
+            new HashFromString(
+                x.Cells[new ReferenceToForeignKeyColumn()].Value
+            ).SequenceEqual(foreignKeyHash)
+        );
     }
 
     public IEnumerator<IDeterminedHash> GetEnumerator()
