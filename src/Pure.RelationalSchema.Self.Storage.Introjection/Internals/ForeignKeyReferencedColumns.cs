@@ -1,34 +1,31 @@
 using System.Collections;
-using Pure.HashCodes.Abstractions;
+using Pure.Primitives.Abstractions.String;
 using Pure.RelationalSchema.Self.Schema.Columns;
 using Pure.RelationalSchema.Self.Schema.Tables;
 using Pure.RelationalSchema.Storage.Abstractions;
 
 namespace Pure.RelationalSchema.Self.Storage.Introjection.Internals;
 
-internal sealed record ForeignKeyReferencedColumns : IEnumerable<IDeterminedHash>
+internal sealed record ForeignKeyReferencedColumns : IEnumerable<IString>
 {
     private readonly IEnumerable<IRow> _rows;
 
     public ForeignKeyReferencedColumns(
-        IDeterminedHash foreignKeyHash,
+        IString foreignKeyId,
         IStoredSchemaDataSet schemaDataset
     )
     {
         IQueryable<IRow> rows = schemaDataset[new ForeignKeysToReferencedColumnsTable()];
         _rows = rows.Where(x =>
-            new HashFromString(
-                x.Cells[new ReferenceToForeignKeyColumn()].Value
-            ).SequenceEqual(foreignKeyHash)
+            x.Cells[new ReferenceToForeignKeyColumn()].Value.TextValue
+            == foreignKeyId.TextValue
         );
     }
 
-    public IEnumerator<IDeterminedHash> GetEnumerator()
+    public IEnumerator<IString> GetEnumerator()
     {
         return _rows
-            .Select(row => new HashFromString(
-                row.Cells[new ReferenceToColumnColumn()].Value
-            ))
+            .Select(row => row.Cells[new ReferenceToColumnColumn()].Value)
             .GetEnumerator();
     }
 
