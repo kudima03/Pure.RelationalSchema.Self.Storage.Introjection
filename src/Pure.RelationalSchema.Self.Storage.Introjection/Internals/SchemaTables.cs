@@ -1,31 +1,27 @@
 using System.Collections;
-using Pure.HashCodes.Abstractions;
+using Pure.Primitives.Abstractions.String;
 using Pure.RelationalSchema.Self.Schema.Columns;
 using Pure.RelationalSchema.Self.Schema.Tables;
 using Pure.RelationalSchema.Storage.Abstractions;
 
 namespace Pure.RelationalSchema.Self.Storage.Introjection.Internals;
 
-internal sealed record SchemaTables : IEnumerable<IDeterminedHash>
+internal sealed record SchemaTables : IEnumerable<IString>
 {
     private readonly IEnumerable<IRow> _rows;
 
-    public SchemaTables(IDeterminedHash schemaHash, IStoredSchemaDataSet schemaDataset)
+    public SchemaTables(IString schemaId, IStoredSchemaDataSet schemaDataset)
     {
         IQueryable<IRow> rows = schemaDataset[new SchemasToTablesTable()];
         _rows = rows.Where(x =>
-            new HashFromString(
-                x.Cells[new ReferenceToSchemaColumn()].Value
-            ).SequenceEqual(schemaHash)
+            x.Cells[new ReferenceToSchemaColumn()].Value.TextValue == schemaId.TextValue
         );
     }
 
-    public IEnumerator<IDeterminedHash> GetEnumerator()
+    public IEnumerator<IString> GetEnumerator()
     {
         return _rows
-            .Select(row => new HashFromString(
-                row.Cells[new ReferenceToTableColumn()].Value
-            ))
+            .Select(row => row.Cells[new ReferenceToTableColumn()].Value)
             .GetEnumerator();
     }
 

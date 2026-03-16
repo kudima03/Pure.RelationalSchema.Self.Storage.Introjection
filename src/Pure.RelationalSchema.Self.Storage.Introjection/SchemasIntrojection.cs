@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Linq.Expressions;
 using Pure.RelationalSchema.Abstractions.Schema;
+using Pure.RelationalSchema.Self.Schema.Columns;
 using Pure.RelationalSchema.Self.Schema.Tables;
 using Pure.RelationalSchema.Self.Storage.Introjection.Internals;
 using Pure.RelationalSchema.Storage.Abstractions;
-using Pure.RelationalSchema.Storage.HashCodes;
 
 namespace Pure.RelationalSchema.Self.Storage.Introjection;
 
@@ -15,7 +15,10 @@ public sealed record SchemasIntrojection : IQueryable<ISchema>
     public SchemasIntrojection(IStoredSchemaDataSet dataset)
     {
         IQueryable<IRow> rows = dataset[new SchemasTable()];
-        _rows = rows.Select(x => new SchemaIntrojection(new RowHash(x), dataset));
+        _rows = rows.Select(x => new SchemaIntrojection(
+            x.Cells[new UuidColumn()].Value,
+            dataset
+        ));
     }
 
     public Type ElementType => _rows.ElementType;
