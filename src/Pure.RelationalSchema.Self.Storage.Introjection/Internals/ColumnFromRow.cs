@@ -1,11 +1,9 @@
-using Pure.HashCodes.Abstractions;
 using Pure.Primitives.Abstractions.String;
 using Pure.RelationalSchema.Abstractions.Column;
 using Pure.RelationalSchema.Abstractions.ColumnType;
 using Pure.RelationalSchema.Self.Schema.Columns;
 using Pure.RelationalSchema.Self.Schema.Tables;
 using Pure.RelationalSchema.Storage.Abstractions;
-using Pure.RelationalSchema.Storage.HashCodes;
 
 namespace Pure.RelationalSchema.Self.Storage.Introjection.Internals;
 
@@ -15,10 +13,10 @@ internal sealed record ColumnFromRow : IColumn
 
     private readonly IStoredSchemaDataSet _schemaDataset;
 
-    public ColumnFromRow(IDeterminedHash rowHash, IStoredSchemaDataSet schemaDataset)
+    public ColumnFromRow(IString columnId, IStoredSchemaDataSet schemaDataset)
     {
         _row = schemaDataset[new ColumnsTable()]
-            .Single(x => new RowHash(x).SequenceEqual(rowHash));
+            .Single(x => x.Cells[new UuidColumn()].Value.TextValue == columnId.TextValue);
         _schemaDataset = schemaDataset;
     }
 
@@ -26,7 +24,7 @@ internal sealed record ColumnFromRow : IColumn
 
     public IColumnType Type =>
         new ColumnTypeFromRow(
-            new HashFromString(_row.Cells[new ReferenceToColumnTypeColumn()].Value),
+            _row.Cells[new ReferenceToColumnTypeColumn()].Value,
             _schemaDataset
         );
 }
