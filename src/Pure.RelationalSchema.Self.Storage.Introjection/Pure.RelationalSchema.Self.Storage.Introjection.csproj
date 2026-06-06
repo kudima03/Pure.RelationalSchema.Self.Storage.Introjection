@@ -17,7 +17,7 @@
     <PackageProjectUrl>https://github.com/kudima03/Pure.RelationalSchema.Self.Storage.Introjection</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Pure.Primitives.Switches" Version="1.1.0" />
+    <PackageReference Include="Pure.Primitives.Switches" Version="1.1.2" />
     <PackageReference Include="Pure.RelationalSchema.Self.Schema" Version="0.1.0-preview.6.0.1" />
     <PackageReference
       Include="Pure.RelationalSchema.Storage.HashCodes"
