@@ -11,7 +11,7 @@ dotnet restore
 dotnet build --no-restore -warnaserror
 dotnet format --verify-no-changes             # check code style (CI enforces this)
 dotnet test --no-build --verbosity normal     # run tests (requires Docker for Testcontainers)
-dotnet pack --configuration Release -p:PackageVersion=<version> --output .
+dotnet pack --configuration Release -p:Version=<version> --output .
 ```
 
 ## Architecture
