@@ -14,6 +14,8 @@ dotnet test --no-build --verbosity normal     # run tests (requires Docker for T
 dotnet pack --configuration Release -p:Version=<version> --output .
 ```
 
+CI additionally passes `-p:AssemblyVersion` (pinned to the major) and `-p:FileVersion`; see `.github/workflows/publish-nuget.yml`.
+
 ## Architecture
 
 This is a **projection NuGet library** — it maps storage rows to domain model objects. There are no domain logic implementations; all types are sealed records that wrap an `IStoredSchemaDataSet`.
