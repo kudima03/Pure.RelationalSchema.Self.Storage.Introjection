@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/Pure.RelationalSchema.Self.Storage.Introjection.Tests/Pure.RelationalSchema.Self.Storage.Introjection.Tests.csproj" />
+  </Folder>
+  <Project Path="Pure.RelationalSchema.Self.Storage.Introjection/Pure.RelationalSchema.Self.Storage.Introjection.csproj" />
+</Solution>
