@@ -3,7 +3,9 @@ using Pure.RelationalSchema.HashCodes;
 using Pure.RelationalSchema.Self.Schema;
 using Pure.RelationalSchema.Self.Storage.Projection;
 using Pure.RelationalSchema.Storage.Abstractions;
-using Pure.RelationalSchema.Storage.PostgreSQL;
+using Pure.RelationalSchema.Storage.PostgreSQL.Creation;
+using Pure.RelationalSchema.Storage.PostgreSQL.Insertion;
+using Pure.RelationalSchema.Storage.PostgreSQL.Querying;
 
 namespace Pure.RelationalSchema.Self.Storage.Introjection.Tests;
 
