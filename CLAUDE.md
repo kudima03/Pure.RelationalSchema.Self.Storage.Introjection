@@ -41,7 +41,7 @@ SchemasIntrojection → SchemaIntrojection (ISchema)
 
 **Multi-targeting:** net7.0, net8.0, net9.0, net10.0. `IsAotCompatible` is `false`.
 
-**Package validation:** `EnablePackageValidation = true` with `PackageValidationBaselineVersion = 0.1.0-preview.0.1.0`. Breaking surface changes fail the build.
+**Package validation:** `EnablePackageValidation = true` with `PackageValidationBaselineVersion = 0.1.0-preview.1.2.0`. Breaking surface changes fail the build.
 
 **Publishing:** triggered by pushing a semver tag (e.g. `1.2.3`). The tag becomes `PackageVersion`. Packages are published to both GitHub Packages and NuGet.org.
 
