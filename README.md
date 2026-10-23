@@ -23,9 +23,9 @@ The single public entry point is `SchemasIntrojection`. It wraps a dataset and l
 
 ## Dependencies
 
-- [`Pure.RelationalSchema.Self.Schema`](https://github.com/kudima03/Pure.RelationalSchema.Self.Schema/tree/0.1.0-preview.6.0.0) — self-describing table and column definitions that describe how relational schema metadata is stored
-- [`Pure.Primitives.Switches`](https://github.com/kudima03/Pure.Primitives.Switches/tree/1.1.0) — type-safe switch primitives used for `IBool`/`IString` value conversions
-- [`Pure.RelationalSchema.Storage.HashCodes`](https://github.com/kudima03/Pure.RelationalSchema.Storage.HashCodes/tree/0.1.0-preview.2.1.0) — hash code utilities for storage row equality and lookup
+- [`Pure.RelationalSchema.Self.Schema`](https://github.com/kudima03/Pure.RelationalSchema.Self.Schema/tree/0.1.0-preview.6.1.0) — self-describing table and column definitions that describe how relational schema metadata is stored
+- [`Pure.Primitives.Switches`](https://github.com/kudima03/Pure.Primitives.Switches/tree/1.2.0) — type-safe switch primitives used for `IBool`/`IString` value conversions
+- [`Pure.RelationalSchema.Storage.HashCodes`](https://github.com/kudima03/Pure.RelationalSchema.Storage.HashCodes/tree/0.1.0-preview.2.2.0) — hash code utilities for storage row equality and lookup
 
 ## Target Frameworks
 
