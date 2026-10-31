@@ -15,8 +15,16 @@
       Version="0.1.0-preview.6.3.0"
     />
     <PackageReference
-      Include="Pure.RelationalSchema.Storage.PostgreSQL"
-      Version="0.1.0-preview.9.1.0"
+      Include="Pure.RelationalSchema.Storage.PostgreSQL.Creation"
+      Version="0.1.0-preview.0.3.1"
+    />
+    <PackageReference
+      Include="Pure.RelationalSchema.Storage.PostgreSQL.Insertion"
+      Version="0.1.0-preview.0.3.0"
+    />
+    <PackageReference
+      Include="Pure.RelationalSchema.Storage.PostgreSQL.Querying"
+      Version="0.1.0-preview.0.4.0"
     />
     <PackageReference Include="Testcontainers.PostgreSql" Version="4.16.0" />
     <PackageReference Include="xunit" Version="2.9.3" />
