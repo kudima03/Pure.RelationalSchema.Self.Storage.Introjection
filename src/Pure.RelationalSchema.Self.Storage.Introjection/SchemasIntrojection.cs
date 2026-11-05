@@ -15,10 +15,9 @@ public sealed record SchemasIntrojection : IQueryable<ISchema>
     public SchemasIntrojection(IStoredSchemaDataSet dataset)
     {
         IQueryable<IRow> rows = dataset[new SchemasTable()];
-        _rows = rows.Select(x => new SchemaIntrojection(
-            x.Cells[new UuidColumn()].Value,
-            dataset
-        ));
+        _rows = rows.AsEnumerable()
+            .Select(x => new SchemaIntrojection(x.Cells[new UuidColumn()].Value, dataset))
+            .AsQueryable<ISchema>();
     }
 
     public Type ElementType => _rows.ElementType;
