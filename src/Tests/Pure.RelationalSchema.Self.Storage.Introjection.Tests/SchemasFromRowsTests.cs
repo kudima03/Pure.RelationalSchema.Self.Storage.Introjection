@@ -24,7 +24,7 @@ public sealed record SchemasFromRowsTests : IAsyncLifetime, IDisposable
         IStoredSchemaDataSet schemaDataSet =
             new PostgreSqlStoredSchemaDataSetWithInsertedRows(
                 new PostgreSqlStoredSchemaDataSet(schema, _databaseFixture.Connection),
-                new SchemaProjection(new RelationalSchemaSchema())
+                new DistinctRows(new SchemaProjection(new RelationalSchemaSchema()))
             );
 
         _ = schemaDataSet.Values.Sum(x => x.Count());
