@@ -6,6 +6,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.1.0-preview.2.0.0] — 2026-11-11
+
+### Added
+
+- The package now targets .NET 11 (`net11.0`) in addition to the existing
+  target frameworks.
+
+### Changed
+
+- Updated the `Pure.Primitives.Switches` dependency from 1.2.0 to 2.0.0.
+- Updated the `Pure.RelationalSchema.Self.Schema` dependency from
+  0.1.0-preview.6.1.0 to 0.1.0-preview.6.2.0.
+- Updated the `Pure.RelationalSchema.Storage.HashCodes` dependency from
+  0.1.0-preview.2.2.0 to 0.1.0-preview.2.3.0.
+
+### Fixed
+
+- `SchemasIntrojection` now materializes schemas on the client.
+
 ## [0.1.0-preview.1.2.0] — 2026-10-23
 
 ### Added
