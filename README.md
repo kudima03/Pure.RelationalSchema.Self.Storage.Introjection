@@ -33,6 +33,7 @@ The single public entry point is `SchemasIntrojection`. It wraps a dataset and l
 - .NET 8
 - .NET 9
 - .NET 10
+- .NET 11
 
 ## Installation
 

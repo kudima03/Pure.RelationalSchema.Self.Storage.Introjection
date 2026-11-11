@@ -39,7 +39,7 @@ SchemasIntrojection → SchemaIntrojection (ISchema)
 
 **Tests** run against a real PostgreSQL instance via Testcontainers — no in-memory or mocked storage. The test creates an actual schema via `Pure.RelationalSchema.Storage.PostgreSQL`, populates it with `Pure.RelationalSchema.Self.Storage.Projection`, introspects it with `SchemasIntrojection`, and verifies structural equality via `SchemaHash`.
 
-**Multi-targeting:** net7.0, net8.0, net9.0, net10.0. `IsAotCompatible` is `false`.
+**Multi-targeting:** net7.0, net8.0, net9.0, net10.0, net11.0. `IsAotCompatible` is `false`.
 
 **Package validation:** `EnablePackageValidation = true` with `PackageValidationBaselineVersion = 0.1.0-preview.1.2.0`. Breaking surface changes fail the build.
 
